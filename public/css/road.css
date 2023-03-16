@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.4;
+    color: #10141E;
+    font-family: 'Outfit', sans-serif;
+   
+   }
+   .headerroad{
+    width:100%;
+    height:80px;
+    background: #3A4374;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   }
+   .headerroad p {
+    color:white;
+   }
+   p img{
+    width:15px;
+    height:17px;
+   
+   }
+   .headerroad h4{
+    color:white;
+   }
+
+   .feeder{
+    width:100%;
+    height:95%;
+   margin-top:10px ;
+   display:grid;
+   grid-template-columns: 33% 33% 33%;
+   grid-template-rows: 100%;
+   grid-gap: 10px;
+   }
+   .parents{
+    width:98%;
+    height:100%;
+   overflow-y: scroll;
+    padding-top:10px;
+   }
+   .parents h3{
+    color:#3A4374;
+   }
+   .parents p{
+    color:#3A4374;
+    padding-bottom: 30px;
+   }
+
+
+   .main{
+    width: 100%;
+    height:300px;
+     border-top:7px solid #F49F85;
+     margin-top: 20px;
+     background: white;
+     padding:20px;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-around;
+     align-items: start;
+
+   }
+
+   .main span{
+    color:#F49F85;
+    font-size: 40px;
+   margin-top: -16px ;
+   
+   }
+   .main p{
+   color:#10141E;
+   margin-left:20px;
+
+   }
+   .main h6{
+    font-size:20px ;
+   }
+   .main h5{
+    font-size: 15px;
+    color:rgb(84, 84, 84);
+
+   }
+   .main button{
+    background: none;
+    padding:8px 10px 10px 10px;
+    background: #F2F4FF;
+    border: none;
+   
+    color:#4661E6;
+    border-radius: 10px;
+    font-size:17px;
+   cursor: pointer;
+   font-weight: bolder;
+ 
+   }
+
+   .upvotes__buttton{
+    background: none;
+    
+    background: #F2F4FF;
+    border: none;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+    color:#4661E6;
+    border-radius: 10px;
+     cursor: pointer;
+   font-weight: bolder;
+   height:40px;
+   min-width:70px;
+   word-spacing: 20px;
+   }
+   .upvotes__buttton span{
+    font-size: 20px;
+    margin: 0;
+    color:#3A4374;
+    font-weight: bold;
+   }

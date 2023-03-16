@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/edit.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="jquery-3.6.1.min.js"></script>
+    <title>Product feedback</title>
+</head>
+<body>
+
+
+    <div id="deleteBox">
+        <div id="tempDiv">
+            <div id="deleteDiv">
+                <h2 id="hi">Confirm Deletion</h2>
+                <p>Are you sure you want to delete feedback  This action cannot be undone.</p>
+                <div id="buttonsDiv">
+                    
+                   <div class="delete__bottom">
+                    <button style="background: #aaaaaa;" id="cancel"  >Cancel</button>
+
+
+    
+                    <form action="/deletefeed" method="POST" >
+
+                        <button value="<%=result[0].id%>" name="feedId" > Okay</button>
+    
+                    </form>
+
+
+
+                   </div>
+                 </div>
+            </div>
+        </div>
+     </div>
+    
+
+<!-- edit and save hide div -->
+<div id="deleteBoxtwo" >
+    <div id="tempDiv">
+        <div id="deleteDiv">
+            <h2 id="hi">Sucessfull</h2>
+            <p>Your edit sucessfully.</p>
+            <div id="buttonsDiv">
+                
+               <div class="delete__bottom">
+              
+
+                <form action="/getfeed" method="POST" >
+
+                    <button value="<%=result[0].id%>" name="feedId" > Okay</button>
+
+                </form>
+
+               </div>
+
+            </div>
+        </div>
+    </div>
+      
+</div>
+<!-- //////////// -->
+
+
+
+    <div class="Whole__container">
+          <div class="feed__div">
+            <p onclick="gotoHome()" style="cursor: pointer;"><img src="/assets/shared/icon-arrow-left.svg">  go back</p>
+
+
+
+
+
+
+
+             <div class="feed">
+                <img src="/assets/shared/icon-new-feedback.svg"/>
+                <h1>Editing '<%=result[0].title%>'</h1>
+                <h3>Feedback Title</h3>
+                <p>Add a short, descriptive headline</p>
+            <div class="titleArea" contenteditable="true"><%=result[0].title%></div>
+
+
+            <h3>Category </h3>
+            <p>Choose a category for your feedback</p>
+        <select class="category"      value="<%=result[0].category%>" >
+            <option value="Feature"  <%if(result[0].category=="Feature"){%> selected<%}%> >Feature</option>
+            <option value="UI"  <%if(result[0].category=="UI"){%> selected<%}%> >UI</option>
+            <option value="UX"  <%if(result[0].category=="UX"){%> selected<%}%> >UX</option>
+            <option value="Enhancement"   <%if(result[0].category=="Enhancement"){%> selected<%}%> >Enhancement</option>
+            <option value="Bug"    <%if(result[0].category=="Bug"){%> selected<%}%> >Bug</option>
+        </select>
+          
+
+        <h3>Update Status </h3>
+        <p>Change feature state</p>
+    <select class="category"  id="status" >
+
+        <option value="Suggestion"  <%if(result[0].status=="Suggestion"){%> selected<%}%> >Suggestion</option>
+        <option value="Planned"      <%if(result[0].status=="Planned"){%> selected<%}%> >Planned</option>
+        <option value="In-Progress"  <%if(result[0].status=="In-Progress"){%> selected<%}%> >In-Progress</option>
+        <option value="Live"         <%if(result[0].status=="Live"){%> selected<%}%> >Live</option>
+       
+    </select>
+
+
+
+        <h3>Feedback Detail</h3>
+        <p>Include any specific comments on what should be improved, added, etc.</p>
+    <div class="detailArea" contenteditable="true"><%=result[0].description%></div>
+
+
+    <div class="bottom">
+        <div style="width:60%"><button class="delete__button" value="<%=result[0].id%>">Delete</button>     </div>
+
+           
+         <div class="button__parent">
+
+           
+                <button style="background: #3A4374;" onclick="history.back()">Cancel</button>
+              
+               <button style="background: #AD1FEA;" value="<%=result[0].id%>" name="id" onclick="editfeedback(this)" class="savebutton">Save Changes</button>
+             </div>
+         </div>
+
+
+             </div>
+          </div>
+     </div>
+
+
+
+    <script src="/js/script.js"></script>
+    <script src="/js/postReplay.js"></script>
+</body>
+</html>

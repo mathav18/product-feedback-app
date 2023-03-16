@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/home.css" rel="stylesheet" type="text/css" />
+    <title>Product feedback</title>
+</head>
+<body>
+
+    <%
+    let one=0;
+    let two=0;
+    let three=0;
+    for(let i of result){
+        let status=i.status.toUpperCase();
+        if(status=="PLANNED"){
+            one++
+        }
+        if(status=="IN-PROGRESS"){
+            two++
+        }
+        if(status=="LIVE"){
+            three++
+        }
+
+    }%>
+
+
+
+    <div class="Whole__container">
+        <div class="left__div">
+            <div class="one__div">
+                <h3>Frontend Mentor</h3>
+                <p>Frontend Mentor</p>
+            </div>
+                 
+
+            <div class="sec__div">
+                <button onclick="filter(this,1)"  class="btn">All</button>
+                <button onclick="filter(this,2)" class="btn">UI</button>
+                <button onclick="filter(this,3)" class="btn">UX</button>
+                <button onclick="filter(this,4)" class="btn">Enhancement</button>
+                <button onclick="filter(this,5)" class="btn">Bug</button>
+                <button onclick="filter(this,6)" class="btn">Feature</button>
+              </div>
+
+
+              <div class="thi__Div">
+                <p style="color:black;font-size:20px ;">Roadmap</p>
+                <a href="/road">View</a>
+               <p style="font-size:18px;color:black"><span style="color:#F49F85">• </span> Planned</p><p style="color:rgb(77, 77, 77)"> <%=one%></p>
+               <p style="font-size:18px;color:black"><span style="color:#AD1FEA">• </span> In-Progress</p><p style="color:rgb(77, 77, 77)"><%=two%></p>
+               <p style="font-size:18px;color:black"><span style="color:#62BCFA">• </span> Live</p><p style="color:rgb(77, 77, 77)"><%=three%></p>
+              </div>
+ </div>
+
+        <div class="feed__div">
+            <div class="header">
+                <div style="display: flex;"><img src="/assets/suggestions/icon-suggestions.svg"/><p style="margin-left:15px;">6 Suggestions</p></div>
+                <div style="display: flex;"><span style="color:rgb(255, 255, 255)">Sort by :  </span><p></p>
+                <select onclick="sorter(this)">
+                    <option value="0">Recently Posted</option>
+                    <option value="1">Most Upvotes</option>
+                    <option value="2">Least Upvotes</option>
+                    <option value="3">Most Comments</option>
+                    <option value="4">Least Comments</option>
+                </select></div>
+                <button class="Add__button" onclick="newfeedback()">+ Add Feedback</button></div>
+
+                <div class="feed__container">
+
+
+                 <%for(let i=result.length-1;i>=0;i--){%>   
+                    <div class="content__div" >
+                        <%if(result[i].bookmark){%>
+                            <button class="Upvotes__parent" value="<%=result[i].id%> <%=result[i].bookmark%> <%=result[i].upvotes%>" onclick="addUpvotes(this)" style="background: #4db5ff;">
+                                <img src="/assets/shared/icon-arrow-up.svg"/>
+                                <p  style="color:white" class="up"><%=result[i].upvotes%></p>
+                            </button>
+                             <%}else{%>
+                                <button class="Upvotes__parent" value="<%=result[i].id%> <%=result[i].bookmark%> <%=result[i].upvotes%>" onclick="addUpvotes(this)" >
+                                    <img src="/assets/shared/icon-arrow-up.svg"/>
+                                    <p class="up"><%=result[i].upvotes%></p>
+                                </button>
+                                <%}%>
+
+                        <div>
+                            <h3><%=result[i].title%></h3>
+                <p><%=result[i].description%></p>
+                <button><%=result[i].category%></button>
+                        </div>
+
+                        <form action="/getfeedBackDetails" method="POST">
+                            <button style="background: none;" value="<%=result[i].id%>" name="id">
+                        <div class="Comments__parent">
+                           
+                        <img src="/assets/shared/icon-comments.svg" class="comment__icon">
+                        <p class="comm"><%=result[i].commentLength%></p>
+                    </div>
+                </button>
+                </form>
+                    </div>
+
+                    <%}%>
+                </div>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

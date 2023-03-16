@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.4;
+    color: #10141E;
+   font-family: sans-serif;
+   }
+   
+
+.Whole__container{
+     width:100%;
+    height:100vh;
+    background-color: #F2F4FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feed__div{
+    width:40%;
+    height:90%;
+    
+}
+.feed{
+    width:100%;
+    height:95%;
+    background: #fff;
+    border-radius: 20px;
+    margin-top: 50px;
+    padding: 20px;
+   
+}
+
+.feed img{
+    margin-top: -45px;
+    position: absolute;
+    
+}
+.feed h1{
+    color:#3A4374;
+    margin-top: 30px;
+   
+    
+}
+.feed h3 {
+    color:#3A4374;
+    padding-top:30px;
+   
+}
+.feed p{
+    color:#647196;
+}
+.titleArea{
+    width: 100%;
+    min-height:80px;
+    height:auto;
+    border: none;
+    background: #eef1ff;
+    padding:10px;
+    margin-top:20px;
+    border-radius: 10px;
+    font-size:18px;
+}
+.titleArea:focus{
+    outline: none;
+    border: 1px solid #4661E6;
+}
+.category{
+    width: 100%;
+    min-height:50px;
+    height:auto;
+    border: none;
+    background: #eef1ff;
+    padding:10px;
+    padding-right: 50px;
+    margin-top:20px;
+    border-radius: 10px;
+    font-size:18px;
+}
+.detailArea{
+     width: 100%;
+    min-height:90px;
+    height:auto;
+    border: none;
+    background: #eef1ff;
+    padding:10px;
+    margin-top:20px;
+    border-radius: 10px;
+    font-size:18px;
+}
+.detailArea:focus{
+    outline: none;
+    border: 1px solid #4661E6;
+}
+
+.bottom{
+    display: flex;
+    justify-content: end;
+}
+.button__parent{
+    width:300px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.button__parent button{
+     background: none;
+    padding:10px 10px 10px 10px;
+    background: #F2F4FF;
+    border: none;
+    margin:4px 10px;
+    color:#ffffff;
+    border-radius: 10px;
+    font-size:20px;
+   cursor: pointer;
+   font-weight: bolder;
+
+}
+
+
+.delete__button{
+    background: none;
+    padding:10px 10px 10px 10px;
+    background: #D73737;
+    border: none;
+    margin:4px 10px;
+    color:#fff;
+    border-radius: 10px;
+    font-size:20px;
+   cursor: pointer;
+   font-weight: bolder;
+   margin-top: 25px;
+   
+}
+
+
+/* DELETE DIV HIDE */
+#deleteBox,#deleteBoxtwo{
+    width:100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgb(103, 103, 103,0.5);
+  
+  display: none;
+}
+
+#tempDiv{
+    width:100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#deleteDiv{
+    width: 25%;
+    height:25%;
+   background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+  justify-content: space-around;
+}
+#deleteDiv h2{
+    color:#D73737;
+}
+
+.delete__bottom{
+    width:100%;
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+.delete__bottom button{
+     background: none;
+    padding:10px 10px 10px 10px;
+    background: #D73737;
+    border: none;
+    margin:4px 10px;
+    color:#fff;
+    border-radius: 10px;
+    font-size:20px;
+   cursor: pointer;
+   font-weight: bolder;
+   margin-top: 25px;
+}
+
+button input{
+    width:0;
+    border:none;
+}

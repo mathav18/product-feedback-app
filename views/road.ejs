@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/home.css" rel="stylesheet" type="text/css" />
+    <link href="css/road.css" rel="stylesheet" type="text/css" />
+    <title>Product feedback</title>
+</head>
+<body>
+    <%
+    let one=0;
+    let two=0;
+    let three=0;
+    for(let i of result){
+        let status=i.status.toUpperCase();
+        if(status=="PLANNED"){
+            one++
+        }
+        if(status=="IN-PROGRESS"){
+            two++
+        }
+        if(status=="LIVE"){
+            three++
+        }
+
+    }%>
+
+
+
+
+
+
+
+
+    <div class="Whole__container">
+  
+
+        <div class="feed__div">
+            <div class="headerroad">
+                <a href="/home"><p ><img src="/assets/shared/icon-arrow-left.svg"/> Go Back</p>
+                    <h4>Roadmap</h4>
+                </a>
+                <button class="Add__button" onclick="newfeedback()">+ Add Feedback</button></div>
+         
+            <div class="feeder">
+
+                <div class="parents">
+                    <h3>Planned(<%=one%>)</h3>
+                    <p>Ideas prioritized for research</p>
+
+                   <%for(let i of result){
+                      let status=i.status.toUpperCase();
+                    if(status=="PLANNED"){%>
+                    <div class="main">
+                        <div style="display:flex">
+                        <span>•</span><p></p>Planned</p></div>
+                        <h6><%=i.title%></h6>
+                        <h5><%=i.description%></h5>
+                        <button><%=i.category%></button>
+
+                        <div style="display: flex;justify-content: space-between;width:100%">
+
+                            <%if(i.bookmark){%>
+
+                                <button class="upvotes__buttton" value="<%=i.id%> <%=i.bookmark%>" onclick="addUpvotes(this)" style="background: #92D0FB;"> 
+                                    <img src="/assets/shared/icon-arrow-up.svg"/>
+                                    <span style="color:white"><%=i.upvotes%></span>
+                                 </button> 
+                                 <%}else{%>
+                                    <button class="upvotes__buttton" value="<%=i.id%> <%=i.bookmark%>" onclick="addUpvotes(this)"> 
+                                        <img src="/assets/shared/icon-arrow-up.svg"/>
+                                        <span><%=i.upvotes%></span>
+                                     </button> 
+                                     <%}%>
+
+                            <form action="/getfeedBackDetails" method="POST">
+                            <button class="upvotes__buttton" style="background: none;" value="<%=i.id%>" name="id"> 
+
+                                <img src="/assets/shared/icon-comments.svg"/> <span><%=i.commentLength%></span>
+                          </button>
+
+                          </form>
+
+                        </div>
+                    </div>
+                      <%}}%>
+             </div>
+
+
+
+                <div class="parents">
+                 <h3>In-Progress (<%=two%>)</h3>
+                    <p>Currently being developed</p>
+
+                    <%for(let i of result){
+                        let status=i.status.toUpperCase();
+                      if(status=="IN-PROGRESS"){%>
+                  
+                    <div class="main" style="border-top:10px solid #AD1FEA">
+                        <div style="display:flex">
+                        <span style="color:#AD1FEA">•</span><p></p>In-Progress</p></div>
+                        <h6><%=i.title%></h6>
+                        <h5><%=i.description%></h5>
+                        <button><%=i.category%></button>
+
+                        <div style="display: flex;justify-content: space-between;width:100%">
+                            
+                            <%if(i.bookmark){%>
+
+                                <button class="upvotes__buttton" value="<%=i.id%> <%=i.bookmark%>" onclick="addUpvotes(this)" style="background: #92D0FB;"> 
+                                    <img src="/assets/shared/icon-arrow-up.svg"/>
+                                    <span style="color:white"><%=i.upvotes%></span>
+                                 </button> 
+                                 <%}else{%>
+                                    <button class="upvotes__buttton" value="<%=i.id%> <%=i.bookmark%>" onclick="addUpvotes(this)"> 
+                                        <img src="/assets/shared/icon-arrow-up.svg"/>
+                                        <span><%=i.upvotes%></span>
+                                     </button> 
+                                     <%}%>
+
+                 <form action="/getfeedBackDetails" method="POST">
+                            <button class="upvotes__buttton" style="background: none;" value="<%=i.id%>" name="id"> 
+                                <img src="/assets/shared/icon-comments.svg"/> <span><%=i.commentLength%></span>
+                          </button>
+                          </form>
+                             </div>
+
+                    </div>
+                    <%}}%>
+                </div>
+          
+
+
+
+
+
+                <div class="parents">
+                    <h3>Live (<%=three%>)</h3>
+                    <p>Released features</p>
+
+                    <%for(let i of result){
+                        let status=i.status.toUpperCase();
+                      if(status=="LIVE"){%>
+
+                    <div class="main" style="border-top:10px solid #62BCFA">
+                        <div style="display:flex">
+                        <span style="color:#62BCFA">•</span><p></p>Live</p></div>
+                        <h6><%=i.title%></h6>
+                        <h5><%=i.description%></h5>
+                        <button><%=i.category%></button>
+
+                        <div style="display: flex;justify-content: space-between;width:100%">
+
+                            <%if(i.bookmark){%>
+
+                            <button class="upvotes__buttton" value="<%=i.id%> <%=i.bookmark%>" onclick="addUpvotes(this)" style="background: #92D0FB;"> 
+                                <img src="/assets/shared/icon-arrow-up.svg"/>
+                                <span style="color:white"><%=i.upvotes%></span>
+                             </button> 
+                             <%}else{%>
+                                <button class="upvotes__buttton" value="<%=i.id%> <%=i.bookmark%>" onclick="addUpvotes(this)"> 
+                                    <img src="/assets/shared/icon-arrow-up.svg"/>
+                                    <span><%=i.upvotes%></span>
+                                 </button> 
+                                 <%}%>
+
+                   <form action="/getfeedBackDetails" method="POST">
+                            <button class="upvotes__buttton" style="background: none;"  value="<%=i.id%>" name="id"> 
+                                <img src="/assets/shared/icon-comments.svg"/> <span><%=i.commentLength%></span>
+                          </button>
+                          </form>
+
+                             </div>
+                    </div>
+                    <%}}%>
+
+                </div>
+            </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

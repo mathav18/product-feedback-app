@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/feedBackDetails.css" rel="stylesheet" type="text/css" />
+    <title>Product feedback</title>
+</head>
+<body>
+    <div class="Whole__container">
+        <div class="feed__div">
+            <div class="navigate">
+                <p onclick="gotoHome()"><img src="/assets/shared/icon-arrow-left.svg">  go back</p>
+
+<form action="/editFeedback" method="POST"><button value="<%=feedback[0].id%>" name="editId">Edit Feedback</button></form> 
+            </div>
+
+         
+            <div class="content__div">
+
+                <%if(feedback[0].bookmark){%>
+                <button class="Upvotes__parent" value="<%=feedback[0].id%> <%=feedback[0].bookmark%>" onclick="addUpvotes(this)" style="background: #92D0FB;">
+                    <img src="/assets/shared/icon-arrow-up.svg"/>
+                    <p  style="color:white"><%=feedback[0].upvotes%></p>
+                </button>
+                 <%}else{%>
+                    <button class="Upvotes__parent" value="<%=feedback[0].id%> <%=feedback[0].bookmark%>" onclick="addUpvotes(this)" >
+                        <img src="/assets/shared/icon-arrow-up.svg"/>
+                        <p><%=feedback[0].upvotes%></p>
+                    </button>
+                    <%}%>
+
+
+                <div>
+                    <h3><%=feedback[0].title%></h3>
+        <p><%=feedback[0].description%></p>
+        <button><%=feedback[0].category%></button>
+                </div>
+
+                <div class="Comments__parent">
+                <img src="/assets/shared/icon-comments.svg" class="comment__icon">
+                <p><%=feedback[0].commentLength%></p>
+            </div>
+            </div>
+
+
+            <div class="commentContainer">
+                <h4><%=feedback[0].commentLength%></h4>
+
+
+
+      <%for(let i of comments){
+        
+        let userImage=JSON.parse(i.user);
+        
+        
+        %>
+             <div class="comment__parent">
+                <div class="comments">
+                    <div class="comment__user__details">
+                       <img src="<%=userImage.image%>"/>
+
+                       <div class="comment__content">
+                        <h4><%=userImage.name%></h4>
+                        <h6><%=userImage.username%></h6>
+                        <p><%=i.content%></p>
+                       </div>
+
+                       <a onclick="replayCommend(this)">Replay</a>
+                    </div>
+                  </div>
+                  <div class="hide">
+                  <div style="display:flex">
+                    <div class="replay__text__area" contenteditable="true"></div>
+               <button class="replay__button" value="<%=i.id%> <%=i.uniqueId%> <%=userImage.username %>" onclick="createReply(this)">Post Replay</button>
+           </div>
+        </div>
+           
+                 <!-- replay element -->
+                 <%for(let j of replay){
+                    let image=JSON.parse(j.user);
+                    %>
+                    
+                     
+                    <%if(j.uniqueid==i.uniqueId){%>
+                        <div class="replay__user__details">
+                            <img src="<%=image.image%>"/>
+     
+                            <div class="comment__content">
+                             <h4><%=image.name%></h4>
+                             <span>@<%=image.username%></span>
+
+                             <p><span style="color:#AD1FEA">@<%=j.reportingTo%></span> <%=j.content%></p>
+                            </div>
+                                <a onclick="replay__text_show(this)">Replay</a>
+                         </div>
+
+                         <div class="hide">
+                            <div style="display:flex">
+                              <div class="replay__text__area" contenteditable="true"></div>
+                         <button class="replay__button" value="<%=j.id%> <%=i.uniqueId%> <%=image.username %>" onclick="createReply(this)">Post Replay</button>
+                     </div>
+                  </div>
+<%}}%>
+
+                 
+                </div>
+                <%}%>
+
+            </div>
+            
+            <div class="AddComment">
+                <h4>Add Comment</h4>
+                <div class="comment__text__area" contenteditable="true" aria-placeholder="Type your comment here"> </div>
+                <div class="Bottom">
+                    <p>250 Characters left</p>
+                    <button value="<%=feedback[0].id%>" onclick="AddComment(this)">Post Comment</button>
+                </div>
+            </div>
+  </div>
+    </div>
+
+
+
+    <script src="/js/script.js"></script>
+    <script src="/js/postReplay.js"></script>
+</body>
+</html>

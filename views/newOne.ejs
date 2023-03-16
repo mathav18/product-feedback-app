@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/new.css" rel="stylesheet" type="text/css" />
+    <title>Product feedback</title>
+</head>
+<body>
+    <div class="Whole__container">
+          <div class="feed__div">
+            <p onclick="gotoHome()"><img src="/assets/shared/icon-arrow-left.svg">  go back</p>
+             <div class="feed">
+                <img src="/assets/shared/icon-new-feedback.svg"/>
+                <h1>Create New Feedback</h1>
+                <h3>Feedback Title</h3>
+                <p>Add a short, descriptive headline</p>
+            <div class="titleArea" contenteditable="true"></div>
+
+
+            <h3>Category </h3>
+            <p>Choose a category for your feedback</p>
+        <select class="category" >
+            <option value="Feature">Feature</option>
+            <option value="UI">UI</option>
+            <option value="UX">UX</option>
+            <option value="Enhancement">Enhancement</option>
+            <option value="Bug">Bug</option>
+        </select>
+
+        <h3>Feedback Detail</h3>
+        <p>Include any specific comments on what should be improved, added, etc.</p>
+    <div class="detailArea" contenteditable="true"></div>
+
+
+    <div class="bottom">
+             <div class="button__parent">
+
+                <button style="background: #3A4374;">Cancel</button>
+               <button style="background: #AD1FEA;" onclick="createNewFeedback()">Add feedback</button>
+             </div>
+    </div>
+
+
+             </div>
+          </div>
+     </div>
+
+
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
